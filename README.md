@@ -1,93 +1,127 @@
-# Jekyll Helper VSCode
+# Jekyll Helper - VSCode Extension
 
+## Note
+This is my first public VSCode extension project, and I welcome any constructive feedback, suggestions, or bug reports. Feel free to create an issue if you encounter any problems or have suggestions for improvement.
 
+## About
+**Jekyll Helper** simplifies the process of managing Jekyll blog posts directly from Visual Studio Code, streamlining tasks like creating drafts, publishing posts, and managing front matter metadata. This project is based on [Nor-s/front-matter-gen](https://github.com/Nor-s/front-matter-gen), itself a fork of [Abdillah/vscode-belikejekyll](https://github.com/Abdillah/vscode-belikejekyll) and [rohgarg/jekyll-post](https://github.com/rohgarg/jekyll-post).
 
-## Getting started
+### Changes Made
+- **Added "Title Case" Function**: Implemented functionality to convert titles to title case in the front matter.
+- **Added Draft Button**: Introduced a button for creating new drafts.
+- **Added Publish Button**: Created a button for publishing drafts as posts.
+- **Implemented Filename Uniqueness Checks**: Ensured unique filenames by adding numeric suffixes (e.g., '-1').
+- **Refactored and Sanitized Core Source Code**: Improved, extended, and cleaned up the core code.
+- **Modified Date Filename Pattern and File Extension Configuration**: Updated the filename format to include dates and customized file extension handling.
 
-To make it easy for you to get started with GitLab, here's a list of recommended next steps.
+### Description
+This VSCode extension adds intuitive buttons to simplify the creation, editing, and publishing of Jekyll blog posts and drafts. It enhances the workflow by providing pre-filled "front matter" templates and ensuring unique filenames for posts and drafts.
 
-Already a pro? Just edit this README.md and make it your own. Want to make it easy? [Use the template at the bottom](#editing-this-readme)!
+### Features
+- **New Explorer Context Menu Options**:
+	- **New Jekyll Post**: Creates a new blog post with front matter.
+	- **New Jekyll Draft**: Creates a draft with front matter.
+	- **Publish Jekyll Draft**: 
+		- Checking if there are unsaved changes in the draft file before proceeding.
+		- Adding the current date to both the filename and the front matter.
+		- Updating the filename based on the title specified in the front matter.
+		- Moving the file to the _posts directory.
+- **Automatic Filename Generation**:
+	- Adds the current date in `YYYY-MM-DD` format.
+	- Sanitizes the title by replacing spaces with hyphens and converting it to lowercase.
+	- Checks for filename uniqueness and adds numeric suffixes if necessary (e.g., `-1`, `-2`).
+- **Title Case Conversion**: Automatically converts the user-provided title into Title Case in the front matter.
+- **Customizable Templates**: Allows the use of custom templates for new posts and drafts. If no template is provided, a built-in default template is used.
 
-## Add your files
+## Usage Instructions
+### Creating a New Post or Draft
+1. **Enable the Extension**: Set `jekyllvscodecompose.enabled` to `true` in your `settings.json` file.
+2. **Right-click on a Directory**: Right-click on a folder in the VSCode Explorer.
+	- **New Jekyll Post**: Creates a post with the current date in the filename.
+	- **New Jekyll Draft**: Creates a draft with the current date in the filename.
+3. **Select a Template**: If you have multiple templates, choose one from the list when prompted.
+4. **Enter a Title**: Provide a title when prompted. The extension will use this title for both the front matter and the filename.
+5. **Publish a Draft**: When ready to publish, right-click on the draft file and select "Publish Jekyll Draft" to convert it into a post. The extension will automatically add the current date and update the front matter title to match the filename.
 
-- [ ] [Create](https://docs.gitlab.com/ee/user/project/repository/web_editor.html#create-a-file) or [upload](https://docs.gitlab.com/ee/user/project/repository/web_editor.html#upload-a-file) files
-- [ ] [Add files using the command line](https://docs.gitlab.com/ee/gitlab-basics/add-file.html#add-a-file-using-the-command-line) or push an existing Git repository with the following command:
+### Providing a Custom Template
+To provide a custom template for posts, place your template file in `.vscode/jekyll-helper-tmpl/{template-file}` relative to your project’s root directory.
+
+Here's an example of a custom template:
+
+```yaml
+---
+layout: post
+title: "${title}"
+date: ${date}
+category: [cat1]
+author: User
+tags: [tag1, tag2]
+description: ""
+---
+```
+
+### Default Template
+If no custom template is provided, the extension will use the following default template:
+
+```yaml
+---
+layout: post
+title: "${title}"
+date: ${date}
+category:
+author:
+tags: []
+description: ""
+---
+```
+
+## Requirements
+This extension has been tested on Visual Studio Code and VSCodium (v1.93). Compatibility with earlier versions may not be guaranteed.
+
+### Compile
+Use the following settings for compiling:
+
+`tsconfig.json`
+```json
+{
+	"compilerOptions": {
+		"module": "Node16",
+		"target": "ES2022",
+		"outDir": "out",
+		"lib": [
+			"ES2022"
+		],
+		"sourceMap": true,
+		"rootDir": "src",
+		"strict": true
+	}
+}
 
 ```
-cd existing_repo
-git remote add origin https://gitlab.com/m0x2A/jekyll-helper-vscode.git
-git branch -M main
-git push -uf origin main
-```
 
-## Integrate with your tools
+## Extension Settings
+- `jekyllhelper.enabled`: Enable or disable the extension.
+- `jekyllhelper.template.path`: Set the path to the directory containing template files.
 
-- [ ] [Set up project integrations](https://gitlab.com/m0x2A/jekyll-helper-vscode/-/settings/integrations)
 
-## Collaborate with your team
+## TODO
+- Add functions for creating posts, drafts, and publishing drafts as commands in the command palette.
+- Improve the Title Case function and add a configuration setting to disable it for non-English titles.
+- Restrict buttons to function only within folders specified in the configuration (e.g., _posts, _drafts).
+- Refactoring for DRY principle.
 
-- [ ] [Invite team members and collaborators](https://docs.gitlab.com/ee/user/project/members/)
-- [ ] [Create a new merge request](https://docs.gitlab.com/ee/user/project/merge_requests/creating_merge_requests.html)
-- [ ] [Automatically close issues from merge requests](https://docs.gitlab.com/ee/user/project/issues/managing_issues.html#closing-issues-automatically)
-- [ ] [Enable merge request approvals](https://docs.gitlab.com/ee/user/project/merge_requests/approvals/)
-- [ ] [Set auto-merge](https://docs.gitlab.com/ee/user/project/merge_requests/merge_when_pipeline_succeeds.html)
+---
 
-## Test and Deploy
+**Enjoy using Jekyll Helper!**
 
-Use the built-in continuous integration in GitLab.
 
-- [ ] [Get started with GitLab CI/CD](https://docs.gitlab.com/ee/ci/quick_start/index.html)
-- [ ] [Analyze your code for known vulnerabilities with Static Application Security Testing (SAST)](https://docs.gitlab.com/ee/user/application_security/sast/)
-- [ ] [Deploy to Kubernetes, Amazon EC2, or Amazon ECS using Auto Deploy](https://docs.gitlab.com/ee/topics/autodevops/requirements.html)
-- [ ] [Use pull-based deployments for improved Kubernetes management](https://docs.gitlab.com/ee/user/clusters/agent/)
-- [ ] [Set up protected environments](https://docs.gitlab.com/ee/ci/environments/protected_environments.html)
+---
 
-***
+## Credits:
 
-# Editing this README
+- [Nor-s/front-matter-gen](https://github.com/Nor-s/front-matter-gen)
+- [rohgarg/jekyll-post](https://github.com/rohgarg/jekyll-post)
+- [Abdillah/vscode-belikejekyll](https://github.com/Abdillah/vscode-belikejekyll)
 
-When you're ready to make this README your own, just edit this file and use the handy template below (or feel free to structure it however you want - this is just a starting point!). Thanks to [makeareadme.com](https://www.makeareadme.com/) for this template.
-
-## Suggestions for a good README
-
-Every project is different, so consider which of these sections apply to yours. The sections used in the template are suggestions for most open source projects. Also keep in mind that while a README can be too long and detailed, too long is better than too short. If you think your README is too long, consider utilizing another form of documentation rather than cutting out information.
-
-## Name
-Choose a self-explaining name for your project.
-
-## Description
-Let people know what your project can do specifically. Provide context and add a link to any reference visitors might be unfamiliar with. A list of Features or a Background subsection can also be added here. If there are alternatives to your project, this is a good place to list differentiating factors.
-
-## Badges
-On some READMEs, you may see small images that convey metadata, such as whether or not all the tests are passing for the project. You can use Shields to add some to your README. Many services also have instructions for adding a badge.
-
-## Visuals
-Depending on what you are making, it can be a good idea to include screenshots or even a video (you'll frequently see GIFs rather than actual videos). Tools like ttygif can help, but check out Asciinema for a more sophisticated method.
-
-## Installation
-Within a particular ecosystem, there may be a common way of installing things, such as using Yarn, NuGet, or Homebrew. However, consider the possibility that whoever is reading your README is a novice and would like more guidance. Listing specific steps helps remove ambiguity and gets people to using your project as quickly as possible. If it only runs in a specific context like a particular programming language version or operating system or has dependencies that have to be installed manually, also add a Requirements subsection.
-
-## Usage
-Use examples liberally, and show the expected output if you can. It's helpful to have inline the smallest example of usage that you can demonstrate, while providing links to more sophisticated examples if they are too long to reasonably include in the README.
-
-## Support
-Tell people where they can go to for help. It can be any combination of an issue tracker, a chat room, an email address, etc.
-
-## Roadmap
-If you have ideas for releases in the future, it is a good idea to list them in the README.
-
-## Contributing
-State if you are open to contributions and what your requirements are for accepting them.
-
-For people who want to make changes to your project, it's helpful to have some documentation on how to get started. Perhaps there is a script that they should run or some environment variables that they need to set. Make these steps explicit. These instructions could also be useful to your future self.
-
-You can also document commands to lint the code or run tests. These steps help to ensure high code quality and reduce the likelihood that the changes inadvertently break something. Having instructions for running tests is especially helpful if it requires external setup, such as starting a Selenium server for testing in a browser.
-
-## Authors and acknowledgment
-Show your appreciation to those who have contributed to the project.
-
-## License
-For open source projects, say how it is licensed.
-
-## Project status
-If you have run out of energy or time for your project, put a note at the top of the README saying that development has slowed down or stopped completely. Someone may choose to fork your project or volunteer to step in as a maintainer or owner, allowing your project to keep going. You can also make an explicit request for maintainers.
+- [Jekyll](https://jekyllrb.com)
+---

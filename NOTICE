@@ -1,0 +1,19 @@
+## NOTICE
+
+This product is a derivative work based on the Nor-s/front-matter-gen GitHub repository.
+
+The original code, licensed under the Apache License, Version 2.0, is available at:
+https://github.com/Nor-s/front-matter-gen
+
+### Changes Made:
+- **Added "Title Case" Function**: Implemented functionality to convert titles to title case in the front matter.
+- **Added Draft Button**: Introduced a button for creating new drafts.
+- **Added Publish Button**: Created a button for publishing drafts as posts.
+- **Implemented Filename Uniqueness Checks**: Ensured unique filenames by adding numeric suffixes (e.g., '-1').
+- **Refactored and Sanitized Core Source Code**: Improved, extended, and cleaned up the core code.
+- **Modified Date Filename Pattern and File Extension Configuration**: Updated the filename format to include dates and customized file extension handling.
+
+### License Information:
+This product includes code from the Nor-s/front-matter-gen repository, which is licensed under the Apache License, Version 2.0. The terms of this license apply to the original code and the modified derivative work. You may obtain a copy of the Apache License, Version 2.0, at:
+
+http://www.apache.org/licenses/LICENSE-2.0

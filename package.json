@@ -1,0 +1,101 @@
+{
+  "name": "jekyll-helper",
+  "displayName": "Jekyll Helper",
+  "description": "Adds Post, Draft, and Publish functionality to the integrated VSCode Explorer for Jekyll projects.",
+  "version": "0.0.3",
+  "engines": {
+    "vscode": "^1.93.0"
+  },
+  "publisher": "m0x2A",
+  "author": {
+    "name": "m0x2A"
+  },
+  "categories": ["Other"],
+  "preview": true,
+  "pricing": "Free",
+  "license": "SEE LICENSE IN LICENSE",
+  "bugs": {
+    "url": "https://gitlab.com/m0x2A/jekyll-helper-vscode/-/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://gitlab.com/m0x2A/jekyll-helper-vscode.git"
+  },
+  "homepage": "https://gitlab.com/m0x2A/jekyll-helper-vscode/-/blob/main/README.md",
+  "activationEvents": [],
+  "main": "./out/extension.js",
+  "contributes": {
+    "configuration": [
+      {
+        "title": "Jekyll VSCode Compose",
+        "properties": {
+          "jekyllhelper.enabled": {
+            "type": "boolean",
+            "default": true,
+            "description": "Enable this extension (use this to configure workspace-specific settings)."
+          },
+          "jekyllhelper.template.path": {
+            "type": "string",
+            "default": ".vscode/jekyll-helper-tmpl",
+            "description": "Path to the directory containing template files."
+          }
+        }
+      }
+    ],
+    "commands": [
+      {
+        "command": "extension.jekyllhelper.createPost",
+        "title": "Create New Jekyll Post"
+      },
+      {
+        "command": "extension.jekyllhelper.createDraft",
+        "title": "Create New Jekyll Draft"
+      },
+      {
+        "command": "extension.jekyllhelper.publishDraft",
+        "title": "Publish Jekyll Draft"
+      }
+    ],
+    "menus": {
+      "explorer/context": [
+        {
+          "when": "config.jekyllhelper.enabled",
+          "command": "extension.jekyllhelper.createPost",
+          "group": "navigation@2"
+        },
+        {
+          "when": "config.jekyllhelper.enabled",
+          "command": "extension.jekyllhelper.createDraft",
+          "group": "navigation@2"
+        },
+        {
+          "when": "config.jekyllhelper.enabled",
+          "command": "extension.jekyllhelper.publishDraft",
+          "group": "navigation@2"
+        }
+      ]
+    }
+  },
+  "scripts": {
+    "vscode:prepublish": "npm run compile",
+    "compile": "tsc -p ./",
+    "watch": "tsc -watch -p ./",
+    "pretest": "npm run compile && npm run lint",
+    "lint": "eslint src --ext ts",
+    "test": "vscode-test"
+  },
+  "devDependencies": {
+    "@eslint/js": "^9.11.0",
+    "@types/mocha": "^10.0.7",
+    "@types/node": "^20.x",
+    "@types/vscode": "^1.93.0",
+    "@typescript-eslint/eslint-plugin": "^8.3.0",
+    "@typescript-eslint/parser": "^8.3.0",
+    "@vscode/test-cli": "^0.0.10",
+    "@vscode/test-electron": "^2.4.1",
+    "eslint": "^9.11.0",
+    "globals": "^15.9.0",
+    "typescript": "^5.5.4",
+    "typescript-eslint": "^8.6.0"
+  }
+}

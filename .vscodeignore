@@ -1,0 +1,11 @@
+src/
+tsconfig.json
+eslint.config.mjs
+CHANGELOG.md
+package.json
+node_modules/
+.vscode/
+*.code-workspace
+.vscode-test/
+*.vsix
+.gitignore
