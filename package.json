@@ -15,13 +15,13 @@
   "pricing": "Free",
   "license": "SEE LICENSE IN LICENSE",
   "bugs": {
-    "url": "https://gitlab.com/m0x2A/jekyll-helper-vscode/-/issues"
+    "url": "https://gitlab.com/m0x2A/jekyll-helper/-/issues"
   },
   "repository": {
     "type": "git",
-    "url": "https://gitlab.com/m0x2A/jekyll-helper-vscode.git"
+    "url": "https://gitlab.com/m0x2A/jekyll-helper.git"
   },
-  "homepage": "https://gitlab.com/m0x2A/jekyll-helper-vscode/-/blob/main/README.md",
+  "homepage": "https://gitlab.com/m0x2A/jekyll-helper/-/blob/main/README.md",
   "activationEvents": [],
   "main": "./out/extension.js",
   "contributes": {
