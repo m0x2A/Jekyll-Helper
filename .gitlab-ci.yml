@@ -31,7 +31,7 @@ test-integration:
     DISPLAY: ':99.0'
   script:
     - apt-get update
-    - apt-get install -y libglib2.0-0 libgtk-3-0 libnss3 libxss1 libasound2 libsecret-1-0
+    - apt-get install -y xvfb libxtst6 libnss3 libgtk-3-0 libxss1 libasound2 libsecret-1-0 libdrm2 libgl1-mesa-dri libgl1-mesa-glx libglib2.0-0
     - npm ci
     - echo $DISPLAY
     - /usr/bin/Xvfb :99 -screen 0 1024x768x24 > /dev/null 2>&1 &
