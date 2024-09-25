@@ -24,8 +24,18 @@ test-unit:
     - npm run test
   artifacts:
     when: always
-    reports:
-      junit: junit-report.xml  # Add JUnit report to see detailed test results in GitLab
+
+test-integration:
+  stage: test
+  variables:
+    DISPLAY: ':99.0'
+  script:
+    - apt-get update
+    - apt-get install -y xvfb libxtst6 libnss3 libgtk-3-0 libxss1 libasound2 libsecret-1-0 libgobject-2.0-0 git
+    - npm ci
+    - echo $DISPLAY
+    - /usr/bin/Xvfb :99 -screen 0 1024x768x24 > /dev/null 2>&1 &
+    - npm run test
 
 build_project:
   stage: build
