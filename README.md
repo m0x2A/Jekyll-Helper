@@ -35,7 +35,7 @@ This VSCode extension adds intuitive buttons to simplify the creation, editing, 
 
 ## Usage Instructions
 ### Creating a New Post or Draft
-1. **Enable the Extension**: Set `jekyllvscodecompose.enabled` to `true` in your `settings.json` file.
+1. **Enable the Extension**: Set `jekyllhelper.enabled` to `true` in your `settings.json` file.
 2. **Right-click on a Directory**: Right-click on a folder in the VSCode Explorer.
 	- **New Jekyll Post**: Creates a post with the current date in the filename.
 	- **New Jekyll Draft**: Creates a draft with the current date in the filename.
