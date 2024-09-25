@@ -1,0 +1,50 @@
+image: node:18-slim
+
+stages:
+  - lint
+  - test
+  - build
+  - package
+
+cache:
+  paths:
+    - node_modules/
+
+lint:
+  stage: lint
+  script:
+    - npm ci
+    - npm run lint
+  allow_failure: false
+
+test-unit:
+  stage: test
+  script:
+    - npm ci
+    - npm run test
+  artifacts:
+    when: always
+    reports:
+      junit: junit-report.xml  # Add JUnit report to see detailed test results in GitLab
+
+build_project:
+  stage: build
+  script:
+    - npm ci
+    - npm run build
+  artifacts:
+    paths:
+      - out
+    expire_in: 1 hour
+
+package:
+  stage: package
+  script:
+    - npm ci
+    - npx vsce package
+  artifacts:
+    paths:
+      - '*.vsix'
+    expire_in: 1 year
+  only:
+    - tags

@@ -273,12 +273,12 @@ export async function processDraft(draftPath: string, postDir: string): Promise<
   // Read the content of the draft file
   let postContent = await fsPromises.readFile(draftPath, 'utf8');
   // Debug log
-  console.log('Original post content read from draft:', postContent);
+  //console.log('Original post content read from draft:', postContent);
 
   // Update the 'date' field in the front matter with the current date and time
   postContent = await updateDate(postContent);
   // Debug log
-  console.log('Updated date in postContent:', postContent);
+  //console.log('Updated date in postContent:', postContent);
 
   // Extract the title from the front matter using a regular expression
   const titleMatch = postContent.match(/title:\s*"(.+?)"/);
@@ -302,7 +302,7 @@ export async function processDraft(draftPath: string, postDir: string): Promise<
   // Write the updated front matter content to the new file path before moving
   await fsPromises.writeFile(postPath, postContent);
   // Debug log
-  console.log('postContent after writeFile:', postContent);
+  //console.log('postContent after writeFile:', postContent);
   
   // Verify that the file has been written correctly
   if (!fs.existsSync(postPath)) {

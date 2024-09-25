@@ -10,7 +10,9 @@
   "author": {
     "name": "m0x2A"
   },
-  "categories": ["Other"],
+  "categories": [
+    "Other"
+  ],
   "preview": true,
   "pricing": "Free",
   "license": "SEE LICENSE IN LICENSE",
@@ -81,21 +83,22 @@
     "compile": "tsc -p ./",
     "watch": "tsc -watch -p ./",
     "pretest": "npm run compile && npm run lint",
-    "lint": "eslint src --ext ts",
-    "test": "vscode-test"
+    "lint": "eslint src",
+    "test": "vscode-test",
+    "build": "npm run compile"
   },
   "devDependencies": {
     "@eslint/js": "^9.11.0",
     "@types/mocha": "^10.0.7",
     "@types/node": "^20.x",
     "@types/vscode": "^1.93.0",
-    "@typescript-eslint/eslint-plugin": "^8.3.0",
-    "@typescript-eslint/parser": "^8.3.0",
+    "@typescript-eslint/eslint-plugin": "^8.x",
+    "@typescript-eslint/parser": "^8.x",
     "@vscode/test-cli": "^0.0.10",
     "@vscode/test-electron": "^2.4.1",
-    "eslint": "^9.11.0",
+    "eslint": "^9.x",
     "globals": "^15.9.0",
-    "typescript": "^5.5.4",
+    "typescript": "5.5.x",
     "typescript-eslint": "^8.6.0"
   }
 }
