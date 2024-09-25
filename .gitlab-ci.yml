@@ -20,6 +20,8 @@ lint:
 test-unit:
   stage: test
   script:
+    - apt-get update
+    - apt-get install -y xvfb libxtst6 libnss3 libgtk-3-0 libxss1 libasound2 libsecret-1-0 libdrm2 libgl1-mesa-dri libgl1-mesa-glx libglib2.0-0 libgbm1
     - npm ci
     - npm run test
   artifacts:
