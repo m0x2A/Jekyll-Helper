@@ -2,7 +2,7 @@
   "name": "jekyll-helper",
   "displayName": "Jekyll Helper",
   "description": "Adds Post, Draft, and Publish functionality to the integrated VSCode Explorer for Jekyll projects.",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "engines": {
     "vscode": "^1.93.0"
   },

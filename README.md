@@ -34,6 +34,18 @@ This VSCode extension adds intuitive buttons to simplify the creation, editing, 
 - **Customizable Templates**: Allows the use of custom templates for new posts and drafts. If no template is provided, a built-in default template is used.
 
 ## Usage Instructions
+### Requirements
+This extension has been tested on Visual Studio Code and VSCodium (v1.93). Compatibility with earlier versions may not be guaranteed.
+
+### Install Extension
+* Manual Installation (VSIX File)
+	* [Download Jekyll Helper VSIX](https://gitlab.com/m0x2A/jekyll-helper/-/jobs/artifacts/v0.0.3/download?job=package)
+	* In VSCode, press Ctrl+Shift+P (Windows and Linux), type `Extensions: Install from VSIX...`, and select the downloaded `.vsix` file.
+	* Alternatively, you can open the Extensions view in VSCode, click on the three-dot menu in the top right, and select `Install from VSIX...`
+### Install via Marketplace
+* [Jekyll Helper on the VSCode Marketplace](https://marketplace.visualstudio.com/items?itemName=m0x2A.jekyll-helper)
+* Alternatively, you can open the Extensions view in VSCode and search for `Jekyll Helper` to install directly from the marketplace.
+
 ### Creating a New Post or Draft
 1. **Enable the Extension**: Set `jekyllhelper.enabled` to `true` in your `settings.json` file.
 2. **Right-click on a Directory**: Right-click on a folder in the VSCode Explorer.
@@ -75,34 +87,36 @@ description: ""
 ---
 ```
 
-## Requirements
-This extension has been tested on Visual Studio Code and VSCodium (v1.93). Compatibility with earlier versions may not be guaranteed.
-
-### Compile
-Use the following settings for compiling:
-
-`tsconfig.json`
-```json
-{
-	"compilerOptions": {
-		"module": "Node16",
-		"target": "ES2022",
-		"outDir": "out",
-		"lib": [
-			"ES2022"
-		],
-		"sourceMap": true,
-		"rootDir": "src",
-		"strict": true
-	}
-}
-
-```
-
 ## Extension Settings
 - `jekyllhelper.enabled`: Enable or disable the extension.
 - `jekyllhelper.template.path`: Set the path to the directory containing template files.
 
+## Development
+#### Prerequisite
+* **Visual Studio Code (VSCode) or VSCodium**: v1.93 or higher
+* **Node.js**: v18.x (tested with v18.16.0)
+* **NPM**: v9.x (tested with v9.5.0) or an alternative Node.js package manager
+* **vsce** (for packaging the extension)
+	* Install globally with NPM: `npm install -g vsce`
+* **Git** (optional, but recommended)
+
+#### Steps to Develop or Compile
+1. Clone the Git repository
+	* `git clone https://gitlab.com/m0x2A/jekyll-helper.git`
+	* `cd jekyll-helper`
+	* Alternatively, download the source code as a ZIP file from GitLab
+2. Install dependencies
+	* `npm install`
+3. Make changes or compile the extension
+	* To compile the project:
+		* `npm run compile`
+	* To debug the extension in VSCode:
+		* Press `F5` in VSCode to start debugging
+	* To create a VSIX package:
+		* `vsce package`
+
+### Compile Configuration
+The TypeScript project is already configured via the `tsconfig.json` file, which can be found in the root of the repository. 
 
 ## TODO
 - Add functions for creating posts, drafts, and publishing drafts as commands in the command palette.
@@ -114,11 +128,9 @@ Use the following settings for compiling:
 
 **Enjoy using Jekyll Helper!**
 
-
 ---
 
 ## Credits:
-
 - [Nor-s/front-matter-gen](https://github.com/Nor-s/front-matter-gen)
 - [rohgarg/jekyll-post](https://github.com/rohgarg/jekyll-post)
 - [Abdillah/vscode-belikejekyll](https://github.com/Abdillah/vscode-belikejekyll)

@@ -17,7 +17,6 @@ lint:
     - npm run lint
   allow_failure: false
 
-
 test-integration:
   stage: test
   variables:
@@ -31,7 +30,6 @@ test-integration:
     - npm run test
   artifacts:
     when: always
-
 
 build_project:
   stage: build
@@ -52,5 +50,13 @@ package:
     paths:
       - '*.vsix'
     expire_in: 1 year
+  only:
+    - tags
+
+publish_marketplace:
+  stage: publish
+  script:
+    - npx vsce publish --packagePath *.vsix -p $AZURE_ACCESS_TOKEN
+  when: manual
   only:
     - tags
