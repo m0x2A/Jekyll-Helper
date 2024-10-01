@@ -57,7 +57,7 @@ package:
 publish_marketplace:
   stage: publish
   script:
-    - npx vsce publish --packagePath *.vsix -p $AZURE_ACCESS_TOKEN
+    - npx vsce publish -p $AZURE_ACCESS_TOKEN --packagePath *.vsix 
   when: manual
   only:
     - tags
